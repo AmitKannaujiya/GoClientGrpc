@@ -1,12 +1,16 @@
 package main
 
 import (
-	"fmt"
-	client "grpc-client/client"
+	client "grpc-client/cmd/client"
+	conf "grpc-client/cmd/config"
+	"log"
 )
 
 func main()  {
-	fmt.Println("Hello World")
-	client.SetupClient()
-	client.SetupTrainBookingClient()
+	config, err :=  conf.GetConfig()
+	if err != nil {
+		log.Fatalf("Config loading failed : %v", err)
+		return
+	}
+	client.Execute(config)
 }
