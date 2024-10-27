@@ -51,7 +51,7 @@ func Execute(Config *conf.Config) {
 	for _, userSeat := range sectionResponse.Users {
 		log.Printf("User  : %s, Seat : %s\n", userSeat.User.String(), userSeat.Seat)
 	}
-	//  Modify Sat for user
+	//  Modify Seat for user
 	firstUser := sectionResponse.Users[0]
 	modifySeatResponse, ems := client.ModifySeat(ctx, &pb.ModifySeatRequest{Email: firstUser.User.Email, NewSeat: u.SEAT_CHANGE_REQUEST_NEW_SEAT_NO})
 	if eus != nil {
